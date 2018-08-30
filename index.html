@@ -9,6 +9,12 @@
 
 <body>
 
+    <style>
+        img {
+            height: 150px;
+        }
+    </style>
+
     <section class="data-container"></section>
 
     <template class="data-template">
@@ -24,7 +30,7 @@
             <p class="data-facebook"></p>
             <p class="data-hobby"></p>
             <p class="data-sex"></p>
-            <p class="data-billede"></p>
+            <img src="" alt="">
         </article>
     </template>
 
@@ -61,7 +67,7 @@
                 klon.querySelector(".data-facebook").textContent = person.facebook;
                 klon.querySelector(".data-hobby").textContent = person.hobby;
                 klon.querySelector(".data-sex").textContent = person.sex;
-                klon.querySelector(".data-github").textContent = person.github;
+                klon.querySelector("img").src = person.billede;
                 //placer klon i html
 
                 modtager.appendChild(klon);
