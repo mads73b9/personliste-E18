@@ -37,10 +37,13 @@
     <script>
         document.addEventListener("DOMContentLoaded", hentJson);
 
+        //variabel "personer" skal defineres udenfor funktionen, så den er tilgængelig overalt
         let personer;
 
         async function hentJson() {
+            //hent (fetch) Json-fil
             let myJson = await fetch("personliste.json");
+            //tolk data (personer) som Json
             personer = await myJson.json();
 
             console.log(personer[0].navn);
@@ -52,14 +55,15 @@
             let modtager = document.querySelector(".data-container");
             let temp = document.querySelector(".data-template");
 
-            //løb personlisten igennem og lav en klon
+            //løb personlisten igennem og lav en klon - for hver af "person" vil jeg gøre noget
             personer.forEach(person => {
                 let klon = temp.cloneNode(true).content;
-                //indsæt data i html
+                //indsæt data i html - for hver klon placerer jeg data i en variabel (person)
                 klon.querySelector("h2").textContent = person.navn;
                 klon.querySelector(".data-github").textContent = person.github;
                 klon.querySelector(".data-website").textContent = person.website;
                 klon.querySelector(".data-mail").textContent = person.mail;
+                klon.querySelector(".data-mail").href = "mailto:" + person.mail;
                 klon.querySelector(".data-adresse").textContent = person.adresse;
                 klon.querySelector(".data-alder").textContent = person.alder;
                 klon.querySelector(".data-civilstatus").textContent = person.civilstatus;
